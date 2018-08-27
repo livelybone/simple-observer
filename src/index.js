@@ -43,8 +43,9 @@ function Observer(generator) {
   that.subscribes = []
 
   var next = function () {
+    var args = arguments
     that.subscribes.map(function (cb) {
-      cb.callback.apply(that, arguments)
+      cb.callback.apply(that, args)
     })
   }
 
