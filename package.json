@@ -1,0 +1,28 @@
+{
+  "name": "@livelybone/simple-observer",
+  "version": "1.0.0",
+  "description": "A simple observer implement",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack  --progress --mode production",
+    "eslint": "./node_modules/.bin/eslint ./src",
+    "test": "./node_modules/.bin/mocha ./test/index.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/livelybone/simple-observer.git"
+  },
+  "keywords": ["simple","small","observer","subscription"],
+  "author": "livelybone(lzp)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/livelybone/simple-observer/issues"
+  },
+  "homepage": "https://github.com/livelybone/simple-observer#readme",
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "mocha": "^5.2.0",
+    "webpack": "^4.16.2",
+    "webpack-command": "^0.4.1"
+  }
+}
