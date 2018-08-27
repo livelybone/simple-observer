@@ -17,7 +17,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, './lib'),
     filename: './[name].js',
-    library: 'ModuleName',
+    library: 'SimpleObserver',
     libraryTarget: 'umd',
     globalObject: 'this',
   },
