@@ -7,4 +7,8 @@ https://github.com/livelybone/simple-observer.git
 ## Demo
 https://github.com/livelybone/simple-observer#readme
 
-## TODO
+## Functions 
+
+### Subscription
+### unsubscribeAll
+### Observer
