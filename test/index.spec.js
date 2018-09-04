@@ -1,4 +1,4 @@
-const module = require('../src/index')
+const SimpleObserver = require('../src/index')
 
 describe('index', () => {
   it('', () => {

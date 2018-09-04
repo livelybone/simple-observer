@@ -2,7 +2,7 @@ function generatorID() {
   return Math.random().toFixed(6)
 }
 
-function Subscription(observer, id) {
+export function Subscription(observer, id) {
   var that = this
   that.observer = observer
   that.id = id
@@ -22,7 +22,7 @@ function Subscription(observer, id) {
  * @method unsubscribeAll
  * @params {Array<Subscription>} arr
  * */
-function unsubscribeAll(arr) {
+export function unsubscribeAll(arr) {
   arr.forEach(function (item) {
     if (item instanceof Subscription) {
       item.unsubscribe()
@@ -34,7 +34,7 @@ function unsubscribeAll(arr) {
  * @function Subscribe
  * @param {generator} generator
  * */
-function Observer(generator) {
+export function Observer(generator) {
   if (typeof generator !== 'function') {
     throw new Error('simple-observer: Observer: Params generator of constructor is invalid, must be a function')
   }
@@ -69,7 +69,3 @@ function Observer(generator) {
 
   generator(next)
 }
-
-exports.Subscription = Subscription
-exports.unsubscribeAll = unsubscribeAll
-exports.Observer = Observer
