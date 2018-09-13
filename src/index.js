@@ -31,7 +31,7 @@ export function unsubscribeAll(arr) {
 }
 
 /**
- * @function Subscribe
+ * @function Observer
  * @param {generator} generator
  * */
 export function Observer(generator) {
