@@ -1,12 +1,12 @@
 {
   "name": "@livelybone/simple-observer",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A simple observer implement",
   "main": "./lib/umd/index.js",
   "module": "./lib/es/index.js",
   "unpkg": "./lib/umd/index.js",
   "scripts": {
-    "build": "rimraf ./lib && rollup -c",
+    "build": "rimraf ./lib && cross-env NODE_ENV=production rollup -c",
     "eslint": "eslint ./src",
     "test": "npm run build && mocha ./test/index.spec.js"
   },
