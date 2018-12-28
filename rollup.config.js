@@ -1,3 +1,4 @@
+import license from 'rollup-plugin-license'
 import { uglify } from 'rollup-plugin-uglify'
 
 const conf = entry => ({
@@ -9,6 +10,13 @@ const conf = entry => ({
   })),
   plugins: [
     (entry.needUglify !== false && uglify()),
+    license({
+      banner: `Bundle of <%= pkg.name %>
+               Generated: <%= moment().format('YYYY-MM-DD') %>
+               Version: <%= pkg.version %>
+               License: <%= pkg.license %>
+               Author: <%= pkg.author %>`,
+    }),
   ]
 })
 

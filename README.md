@@ -39,4 +39,4 @@ See: https://github.com/livelybone/simple-observer/blob/master/src/index.js#L5-L
 See: https://github.com/livelybone/simple-observer/blob/master/src/index.js#L21-L31
 
 ### Observer
-See: https://github.com/livelybone/simple-observer/blob/master/src/index.js#L21-L31
+See: https://github.com/livelybone/simple-observer/blob/master/src/index.js#L33-L71
