@@ -6,7 +6,7 @@ const conf = entry => ({
   output: entry.formats.map(format => ({
     file: `./lib/${format}/${entry.name}.js`,
     format,
-    name: 'SimpleObserver',
+    name: 'Observer',
   })),
   plugins: [
     (entry.needUglify !== false && uglify()),

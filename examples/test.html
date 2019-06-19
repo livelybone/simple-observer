@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Title</title>
+  <script src="../lib/umd/index.js"></script>
+</head>
+<body>
+<div id="module">
+  打开 devTool
+</div>
+<script>
+var next
+var observer = new Observer(function(nxt) {
+  next = nxt
+})
+
+var subscriberId = observer.subscribe(console.log)
+</script>
+</body>
+</html>

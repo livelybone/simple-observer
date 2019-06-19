@@ -1,71 +1,92 @@
-function generatorID() {
+function generateID() {
   return Math.random().toFixed(6)
 }
 
-export function Subscription(observer, id) {
-  var that = this
-  that.observer = observer
-  that.id = id
-
-  that.unsubscribe = function (cb) {
-    var index = Object.keys(that.observer.subscribes)
-      .find(function (k) {
-        return that.observer.subscribes[k].id === that.id
-      })
-    that.observer.subscribes.splice(index, 1)
-    if (typeof cb === 'function') cb()
-    console.log('simple-observer: Subscription: Unsubscribe success!')
-  }
-}
-
 /**
- * @method unsubscribeAll
- * @params {Array<Subscription>} arr
+ * @param { Array } arr
+ * @param value
+ * @return Number
  * */
-export function unsubscribeAll(arr) {
-  arr.forEach(function (item) {
-    if (item instanceof Subscription) {
-      item.unsubscribe()
+function findIndex(arr, value) {
+  var index
+
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] === value) {
+      index = i
+      break
     }
-  })
+  }
+
+  return index
 }
 
 /**
  * @function Observer
- * @param {generator} generator
+ * @param { Function } callback
  * */
-export function Observer(generator) {
-  if (typeof generator !== 'function') {
-    throw new Error('simple-observer: Observer: Params generator of constructor is invalid, must be a function')
+export default function Observer(callback) {
+  if (typeof callback !== 'function') {
+    throw new Error('simple-observer: Param callback of constructor is invalid, must be a function')
   }
 
   var that = this
-  that.subscribes = []
+  var subscribers = {}
+  var subscriberIds = []
 
-  var next = function () {
+  function publisher() {
     var args = arguments
-    that.subscribes.map(function (cb) {
-      cb.callback.apply(that, args)
+
+    subscriberIds.forEach(function(id) {
+      subscribers[id].apply(that, args)
     })
   }
 
-  that.subscribe = function (callback) {
-    var id = generatorID()
-    var index = 0
-
-    var exec = function (i) {
-      return that.subscribes[i].id === id
-    }
+  function getUniqueId() {
+    var id
 
     do {
-      index = Object.keys(that.subscribes)
-        .find(exec)
-      id = generatorID()
-    } while (index !== undefined)
+      id = generateID()
+    } while (findIndex(subscriberIds, id) !== undefined)
 
-    that.subscribes.push({ id: id, callback: callback })
-    return new Subscription(that, id)
+    return id
   }
 
-  generator(next)
+  /**
+   * @method subscribe
+   * @param { Function } callback
+   * */
+  that.subscribe = function(callback) {
+    var id = getUniqueId()
+    subscriberIds.push(id)
+    subscribers[id] = callback
+    return id
+  }
+
+  /**
+   * @method unsubscribe
+   * @param { String | Array<String> } ids
+   * */
+  that.unsubscribe = function(ids) {
+    var arr = typeof ids === 'string' ? [ids] : ids
+    arr.forEach(function(id) {
+      var index = findIndex(subscriberIds, id)
+      if (index !== undefined) {
+        subscriberIds.splice(index, 1)
+        subscribers[id] = undefined
+      }
+    })
+    console.log('simple-observer: Unsubscribe success!')
+  }
+
+  /**
+   * @method destroy
+   * @desc Memory release
+   * */
+  that.destroy = function() {
+    callback(null)
+    subscribers = {}
+    subscriberIds = []
+  }
+
+  callback(publisher)
 }
