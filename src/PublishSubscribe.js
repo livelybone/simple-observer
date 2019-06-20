@@ -1,7 +1,7 @@
 /**
  * Publisher - Subscriber model
  * */
-import { findIndexByKey, getUniqueId } from './utils'
+import { findIndex, getUniqueId } from './utils'
 
 export default function PublishSubscribe() {
   var that = this
@@ -26,7 +26,9 @@ export default function PublishSubscribe() {
    * */
   that.subscribe = function(subscriber) {
     var id = getUniqueId(function(id) {
-      return findIndexByKey(subscribers, 'id', id) !== undefined
+      return findIndex(subscribers, function(item) {
+        return item.id === id
+      }) !== undefined
     })
     subscribers.push({ id: id, callback: subscriber })
     console.log('simple-observer: Start subscribe!')
@@ -41,8 +43,9 @@ export default function PublishSubscribe() {
   that.unsubscribe = function(ids) {
     var arr = ids instanceof Array ? ids : [ids]
     arr.forEach(function(id) {
-      var index = findIndexByKey(subscribers, 'id', id) ||
-        findIndexByKey(subscribers, 'callback', id)
+      var index = findIndex(subscribers, function(item) {
+        return item.id === id || item.callback === id
+      })
       if (index !== undefined) subscribers.splice(index, 1)
     })
     console.log('simple-observer: Unsubscribe success!')

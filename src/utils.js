@@ -9,34 +9,14 @@ export function generateID() {
 /**
  * @function findIndex
  * @param { Array } arr
- * @param value
+ * @param { Function } judgeFn, (item, index, arr) => boolean
  * @return Number
  * */
-export function findIndex(arr, value) {
+export function findIndex(arr, judgeFn) {
   var index
 
   for (var i = 0; i < arr.length; i++) {
-    if (arr[i] === value) {
-      index = i
-      break
-    }
-  }
-
-  return index
-}
-
-/**
- * @function findIndex
- * @param { Array } arr
- * @param { String | Number } key
- * @param value
- * @return Number
- * */
-export function findIndexByKey(arr, key, value) {
-  var index
-
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i][key] === value) {
+    if (judgeFn(arr[i], i, arr)) {
       index = i
       break
     }

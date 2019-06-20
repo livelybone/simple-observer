@@ -13,7 +13,9 @@ export function Subject() {
   }
 
   that.removeObserver = function(observer) {
-    var index = findIndex(observers, observer)
+    var index = findIndex(observers, function(item) {
+      return item === observer
+    })
     if (index !== undefined) observers.splice(index, 1)
     console.log('simple-observer: Remove observer success!')
   }
