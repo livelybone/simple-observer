@@ -4,44 +4,52 @@ A simple observer implement
 ## repository
 https://github.com/livelybone/simple-observer.git
 
-## Demo
-https://github.com/livelybone/simple-observer#readme
-
 ## Installation
 ```bash
 npm i -S @livelybone/simple-observer
 ```
 
 ## Global name
-`Observer`
+`SimpleObserver`
 
 ## Usage
+> Observer model
 ```js
-import Observer from '@livleybone/simple-observer'
+import { Subject, Observer } from '@livleybone/simple-observer'
 
-var publisher
-var observer = new Observer(_publisher => {
-  publisher = _publisher
-})
+const subject = new Subject()
+const observer = new Observer((...args) => console.log(...args))
 
-// method -> subscribe
-// subscribe the data provided by publisher
-var subscriberId = observer.subscribe((...args) => console.log(...args))
+// Method -> addObserver
+subject.addObserver(observer)
 
-// Provide data via publisher
-publisher(1) // -> console: 1
-publisher(1, 2) // -> console: 1 2
+// Method -> notify
+// Notify the observers with data
+subject.notify(1) // -> console: 1
+subject.notify(1, 2) // -> console: 1 2
 
-// method -> unsubscribe
-// unsubscribe the subscriber via id
-observer.unsubscribe(subscriberId)
-
-// method -> destroy
-// Release memory, so you can safely delete the Observer instance
-observer.destroy()
+// Method -> removeObserver
+subject.removeObserver(observer)
 ```
 
+> Publish-Subscribe model
 ```js
-// when you want to set this module as external while you are developing another module, you should import it like this
-import Observer  from '@livleybone/simple-observer'
+import { PublishSubscribe } from '@livleybone/simple-observer'
+
+const pubSub = new PublishSubscribe()
+
+// Method -> subscribe
+// Subscribe the data provided by publisher
+const subscriber = (...args) => console.log(...args)
+const subscriberId = pubSub.subscribe(subscriber)
+
+// Method -> publish
+// Publish data
+pubSub.publish(1) // -> console: 1
+pubSub.publish(1, 2) // -> console: 1 2
+
+// Method -> unsubscribe
+// Unsubscribe the subscriber via id or callback function of subscriber
+pubSub.unsubscribe(subscriberId)
+// or pubSub.unsubscribe(subscriber)
 ```

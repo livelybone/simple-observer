@@ -11,12 +11,20 @@
   打开 devTool
 </div>
 <script>
-var next
-var observer = new Observer(function(nxt) {
-  next = nxt
+var subject = new SimpleObserver.Subject()
+var observer = new SimpleObserver.Observer(function() {
+  console.log.apply(null, [].concat.apply(['observer'], arguments))
 })
 
-var subscriberId = observer.subscribe(console.log)
+subject.addObserver(observer)
+
+var pubsub = new SimpleObserver.PublishSubscribe()
+
+function pubsubCb() {
+  console.log.apply(null, [].concat.apply(['pubsub'], arguments))
+}
+
+pubsub.subscribe(pubsubCb)
 </script>
 </body>
 </html>

@@ -6,7 +6,7 @@ const conf = entry => ({
   output: entry.formats.map(format => ({
     file: `./lib/${format}/${entry.name}.js`,
     format,
-    name: 'Observer',
+    name: entry.name === 'index' ? 'SimpleObserver' : entry.name,
   })),
   plugins: [
     (entry.needUglify !== false && uglify()),
@@ -17,10 +17,12 @@ const conf = entry => ({
                License: <%= pkg.license %>
                Author: <%= pkg.author %>`,
     }),
-  ]
+  ],
 })
 
 export default [
   { name: 'index', filename: './src/index.js', formats: ['es'], needUglify: false },
   { name: 'index', filename: './src/index.js', formats: ['umd'] },
+  { name: 'Observer', filename: './src/Observer.js', formats: ['umd'] },
+  { name: 'PublishSubscribe', filename: './src/PublishSubscribe.js', formats: ['umd'] },
 ].map(conf)
