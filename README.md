@@ -1,5 +1,12 @@
 # @livelybone/simple-observer
-A simple observer implement
+[![NPM Version](http://img.shields.io/npm/v/@livelybone/simple-observer.svg?style=flat-square)](https://www.npmjs.com/package/@livelybone/simple-observer)
+[![Download Month](http://img.shields.io/npm/dm/@livelybone/simple-observer.svg?style=flat-square)](https://www.npmjs.com/package/@livelybone/simple-observer)
+![gzip with dependencies: 1kb](https://img.shields.io/badge/gzip--with--dependencies-1kb-brightgreen.svg "gzip with dependencies: 1kb")
+![pkg.module](https://img.shields.io/badge/pkg.module-supported-blue.svg "pkg.module")
+
+> `pkg.module supported`, which means that you can apply tree-shaking in you project
+
+A simple implement of observer model and publish-subscribe model
 
 ## repository
 https://github.com/livelybone/simple-observer.git

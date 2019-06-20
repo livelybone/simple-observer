@@ -1,7 +1,7 @@
 {
   "name": "@livelybone/simple-observer",
-  "version": "4.0.1",
-  "description": "A simple observer implement",
+  "version": "4.0.2",
+  "description": "A simple implement of observer model and publish-subscribe model",
   "main": "./lib/umd/index.js",
   "module": "./lib/es/index.js",
   "unpkg": "./lib/umd/index.js",
@@ -17,6 +17,8 @@
     "url": "https://github.com/livelybone/simple-observer.git"
   },
   "keywords": [
+    "simple",
+    "small",
     "subject",
     "observer",
     "subscribe",
