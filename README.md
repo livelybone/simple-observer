@@ -35,6 +35,10 @@ subject.addObserver(observer)
 subject.notify(1) // -> console: 1
 subject.notify(1, 2) // -> console: 1 2
 
+// Method -> getObserversCount
+// Get the number of observers
+subject.getObserversCount() // -> 1
+
 // Method -> removeObserver
 subject.removeObserver(observer)
 ```
@@ -54,6 +58,10 @@ const subscriberId = pubSub.subscribe(subscriber)
 // Publish data
 pubSub.publish(1) // -> console: 1
 pubSub.publish(1, 2) // -> console: 1 2
+
+// Method -> getSubscribersCount
+// Get the number of subscribers
+pubSub.getSubscribersCount() // -> 1
 
 // Method -> unsubscribe
 // Unsubscribe the subscriber via id or callback function of subscriber

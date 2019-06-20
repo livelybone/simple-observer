@@ -50,4 +50,12 @@ export default function PublishSubscribe() {
     })
     console.log('simple-observer: Unsubscribe success!')
   }
+
+  /**
+   * @method getSubscribersCount
+   * @desc get the number of subscribers
+   * */
+  that.getSubscribersCount = function() {
+    return subscribers.length
+  }
 }
