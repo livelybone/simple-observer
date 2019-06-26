@@ -39,7 +39,7 @@ export function Subject() {
 
   /**
    * @method getSubscribersCount
-   * @desc get the number of observers
+   * @desc Get the number of observers
    * */
   that.getObserversCount = function() {
     return observers.length

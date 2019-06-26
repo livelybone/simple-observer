@@ -9,7 +9,7 @@ export default function PublishSubscribe() {
 
   /**
    * @method publish
-   * @desc for publishing data
+   * @desc For publishing data
    * */
   that.publish = function() {
     var args = arguments
@@ -21,16 +21,16 @@ export default function PublishSubscribe() {
 
   /**
    * @method subscribe
-   * @param { Function } subscriber
-   * @desc subscribe the data provided by subscriber
+   * @param { Function } subscribeFn
+   * @desc Subscribe the data provided by publisher
    * */
-  that.subscribe = function(subscriber) {
+  that.subscribe = function(subscribeFn) {
     var id = getUniqueId(function(id) {
       return findIndex(subscribers, function(item) {
         return item.id === id
       }) !== undefined
     })
-    subscribers.push({ id: id, callback: subscriber })
+    subscribers.push({ id: id, callback: subscribeFn })
     console.log('simple-observer: Start subscribe!')
     return id
   }
@@ -38,7 +38,7 @@ export default function PublishSubscribe() {
   /**
    * @method unsubscribe
    * @param { String | Function | Array<String|Function> } ids
-   * @desc unsubscribe the subscriber via id
+   * @desc Unsubscribe the subscribeFn via id
    * */
   that.unsubscribe = function(ids) {
     var arr = ids instanceof Array ? ids : [ids]
@@ -53,7 +53,7 @@ export default function PublishSubscribe() {
 
   /**
    * @method getSubscribersCount
-   * @desc get the number of subscribers
+   * @desc Get the number of subscribers
    * */
   that.getSubscribersCount = function() {
     return subscribers.length
