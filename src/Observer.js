@@ -48,12 +48,12 @@ export function Subject() {
 
 /**
  * @function Observer
- * @param { Function } callback
+ * @param { Function } observeFn
  * */
-export function Observer(callback) {
+export function Observer(observeFn) {
   var that = this
 
   that.update = function() {
-    callback.apply(that, arguments)
+    observeFn.apply(that, arguments)
   }
 }

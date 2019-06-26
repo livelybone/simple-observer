@@ -1,7 +1,7 @@
-type ObserverCb = (...args: any[]) => any | void
+type ObserveFn = (...args: any[]) => void
 
 export class Observer {
-  constructor(callback: ObserverCb)
+  constructor(observeFn: ObserveFn)
 }
 
 export class Subject {
@@ -22,7 +22,7 @@ export class Subject {
   getObserversCount(): number
 }
 
-type SubscribeFn = (...args: any[]) => any | void
+type SubscribeFn = (...args: any[]) => void
 type SubscriberId = string
 
 interface Subscriber {

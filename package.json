@@ -1,6 +1,6 @@
 {
   "name": "@livelybone/simple-observer",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "description": "A simple implement of observer model and publish-subscribe model",
   "main": "./lib/umd/index.js",
   "module": "./lib/es/index.js",
